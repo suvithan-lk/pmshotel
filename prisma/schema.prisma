@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  HOTEL_MANAGER
+  RESERVATION_MANAGER
+  RECEPTIONIST
+  HOUSEKEEPING_STAFF
+  MAINTENANCE_STAFF
+  ACCOUNTANT
+  REVENUE_MANAGER
+}
+
+enum RoomStatus {
+  AVAILABLE
+  OCCUPIED
+  DIRTY
+  CLEANING
+  MAINTENANCE
+}
+
+enum ReservationStatus {
+  CONFIRMED
+  PENDING
+  CHECKED_IN
+  CHECKED_OUT
+  CANCELLED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  role         Role       @default(RECEPTIONIST)
+  department   String
+  status       String     @default("active")
+  lastLoginAt  DateTime?
+  createdAt    DateTime   @default(now())
+  auditLogs    AuditLog[]
+}
+
+model Guest {
+  id           String        @id @default(cuid())
+  name         String
+  email        String?       @unique
+  phone        String
+  country      String
+  vip          Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  reservations Reservation[]
+}
+
+model RoomType {
+  id           String @id @default(cuid())
+  name         String @unique
+  maxOccupancy Int
+  bed          String
+  rooms        Room[]
+}
+
+model Room {
+  id           String        @id @default(cuid())
+  number       String        @unique
+  floor        Int
+  rate         Int
+  status       RoomStatus    @default(AVAILABLE)
+  roomTypeId   String
+  roomType     RoomType      @relation(fields: [roomTypeId], references: [id])
+  housekeeping String?
+  issue        String?
+  reservations Reservation[]
+
+  @@index([roomTypeId])
+}
+
+model Reservation {
+  id          String            @id @default(cuid())
+  bookingCode String            @unique
+  guestId     String
+  guest       Guest             @relation(fields: [guestId], references: [id])
+  roomId      String
+  room        Room              @relation(fields: [roomId], references: [id])
+  arrival     DateTime
+  departure   DateTime
+  guestsCount Int
+  source      String
+  rate        Int
+  status      ReservationStatus @default(PENDING)
+  request     String?
+  vip         Boolean           @default(false)
+  createdAt   DateTime          @default(now())
+  payments    Payment[]
+
+  @@index([roomId])
+  @@index([guestId])
+}
+
+model Payment {
+  id                    String        @id @default(cuid())
+  reservationId         String
+  reservation           Reservation   @relation(fields: [reservationId], references: [id])
+  amountUsdCents        Int
+  status                PaymentStatus @default(PENDING)
+  method                String?
+  stripeSessionId       String?       @unique
+  stripePaymentIntentId String?
+  createdAt             DateTime      @default(now())
+
+  @@index([reservationId])
+}
+
+model Channel {
+  id         String    @id @default(cuid())
+  key        String    @unique
+  name       String
+  status     String    @default("connected")
+  inventory  Int       @default(0)
+  lastSyncAt DateTime?
+  syncLogs   SyncLog[]
+}
+
+model SyncLog {
+  id        String   @id @default(cuid())
+  channelId String
+  channel   Channel  @relation(fields: [channelId], references: [id])
+  message   String
+  level     String   @default("info")
+  createdAt DateTime @default(now())
+
+  @@index([channelId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  userName  String
+  role      String
+  action    String
+  module    String
+  entity    String
+  oldValue  String?
+  newValue  String?
+  status    String   @default("success")
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}

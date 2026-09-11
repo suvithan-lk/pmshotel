@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: jch-backend
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "2020"
+    ports:
+      - "5432:5432"
+    volumes:
+      - jch_backend_pgdata:/var/lib/postgresql/data
+
+volumes:
+  jch_backend_pgdata:
