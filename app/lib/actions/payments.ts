@@ -40,7 +40,7 @@ export async function createCheckoutSession(bookingCode: string, baseUrl: string
             currency: "usd",
             unit_amount: amountUsdCents,
             product_data: {
-              name: `Grand Azure Colombo — ${bookingCode}`,
+              name: `JaffnaCityPMS — ${bookingCode}`,
               description: `${reservation.guest.name} · ${nights} night(s) · ${fmtLKR(totalLkr)}`,
             },
           },

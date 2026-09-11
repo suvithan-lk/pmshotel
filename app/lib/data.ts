@@ -19,7 +19,7 @@ import type {
 } from "./types";
 
 export const HOTEL = {
-  name: "Grand Azure Colombo",
+  name: "JaffnaCityPMS",
   category: "5-Star Luxury Hotel",
   totalRooms: 100,
   currency: "LKR",

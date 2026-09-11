@@ -50,7 +50,7 @@ export default function OverviewView({ active }: { active: boolean }) {
             <span className="live-dot"></span> LIVE HOTEL OPERATIONS · <LiveClock />
           </div>
           <h1>Good morning, Suvithan <span>✦</span></h1>
-          <p>Here&apos;s what&apos;s happening across Grand Azure Colombo today, 26 August 2026.</p>
+          <p>Here&apos;s what&apos;s happening across JaffnaCityPMS today, 26 August 2026.</p>
         </div>
         <div className="head-actions">
           <button className="btn btn-secondary" onClick={() => toast("Dashboard report exported successfully.")}>⇩ Export</button>

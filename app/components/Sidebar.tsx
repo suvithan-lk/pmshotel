@@ -135,9 +135,9 @@ export default function Sidebar() {
       id="sidebar"
     >
       <div className="brand">
-        <div className="brand-mark">GA</div>
+        <div className="brand-mark">JC</div>
         <div className="brand-text">
-          <strong>Grand Azure</strong>
+          <strong>JaffnaCityPMS</strong>
           <span>Hotel PMS</span>
         </div>
         <button

@@ -1,5 +1,5 @@
 /**
- * Seed snapshot for Grand Azure Colombo.
+ * Seed snapshot for JaffnaCityPMS.
  * Intentionally self-contained (not imported from app/lib/data.ts) — seed data is a
  * fixed historical snapshot and must keep working even after data.ts is pruned as
  * views migrate to the database.
@@ -134,7 +134,7 @@ const SYNC_LOGS = [
 ];
 
 async function main() {
-  console.log("Seeding Grand Azure Colombo…");
+  console.log("Seeding JaffnaCityPMS…");
 
   const roomTypeIds = new Map<string, string>();
   for (const rt of ROOM_TYPES) {

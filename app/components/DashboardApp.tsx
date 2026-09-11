@@ -90,7 +90,7 @@ function DataGate({ children }: { children: React.ReactNode }) {
     return (
       <div className="data-gate">
         <div className="data-gate-spinner" />
-        <p>Loading Grand Azure Colombo…</p>
+        <p>Loading JaffnaCityPMS…</p>
       </div>
     );
   }
