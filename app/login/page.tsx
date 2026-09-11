@@ -6,14 +6,14 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-brand">
-          <div className="brand-mark">GA</div>
+          <div className="brand-mark">JC</div>
           <div>
-            <strong>Grand Azure</strong>
+            <strong>JaffnaCityPMS</strong>
             <span>Hotel PMS</span>
           </div>
         </div>
         <h1>Sign in to your account</h1>
-        <p>Grand Azure Colombo — Property Management System</p>
+        <p>JaffnaCityPMS — Property Management System</p>
         <Suspense>
           <LoginForm />
         </Suspense>

@@ -5,14 +5,14 @@ export default function SettingsView({ active }: { active: boolean }) {
         <div>
           <div className="eyebrow">PROPERTY</div>
           <h1>Property Settings</h1>
-          <p>Grand Azure Colombo · configuration &amp; system preferences</p>
+          <p>JaffnaCityPMS · configuration &amp; system preferences</p>
         </div>
       </div>
       <div className="section-grid two-col">
         <article className="panel">
           <div className="panel-head"><div><h2>Property Details</h2></div></div>
           <div className="detail-grid" style={{ padding: "0 17px 17px" }}>
-            <div><span>Property name</span><strong>Grand Azure Colombo</strong></div>
+            <div><span>Property name</span><strong>JaffnaCityPMS</strong></div>
             <div><span>Category</span><strong>5-Star Luxury Hotel</strong></div>
             <div><span>Total rooms</span><strong>100</strong></div>
             <div><span>Currency</span><strong>LKR — Sri Lankan Rupee</strong></div>

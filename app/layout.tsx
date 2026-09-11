@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Grand Azure — Hotel PMS",
-  description: "Grand Azure Colombo — Hotel Property Management System",
+  title: "JaffnaCityPMS — Hotel PMS",
+  description: "JaffnaCityPMS — Hotel Property Management System",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

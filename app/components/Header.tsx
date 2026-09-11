@@ -120,11 +120,11 @@ export default function Header() {
         <button className="icon-btn" id="mobileMenu" onClick={toggleMobileNav}>
           ☰
         </button>
-        <div className="brand-mark">GA</div>
-        <strong>Grand Azure</strong>
+        <div className="brand-mark">JC</div>
+        <strong>JaffnaCityPMS</strong>
       </div>
       <div className="breadcrumb">
-        <span>Grand Azure Colombo</span>
+        <span>JaffnaCityPMS</span>
         <b>/</b>
         <strong>{BREADCRUMB[view] || view}</strong>
       </div>
@@ -212,8 +212,8 @@ export default function Header() {
           </div>
         </div>
 
-        <button className="top-icon property-btn" onClick={() => toast("Single-property mode — Grand Azure Colombo.")} title="Property">
-          <span className="pbtn-label">Grand Azure</span> <i>⌄</i>
+        <button className="top-icon property-btn" onClick={() => toast("Single-property mode — JaffnaCityPMS.")} title="Property">
+          <span className="pbtn-label">JaffnaCityPMS</span> <i>⌄</i>
         </button>
         <button className="date-btn" onClick={() => toast("Business date: 26 August 2026.")}>
           26 Aug 2026 <span>⌄</span>
